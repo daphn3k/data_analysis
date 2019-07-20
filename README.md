@@ -1,5 +1,5 @@
 # data_analysis
-Collection of python functions to facilitate data exploration/analysis/etc.
+Collecting my python functions to facilitate data exploration/analysis/etc.
 ---------------
 
 Available modules: 
