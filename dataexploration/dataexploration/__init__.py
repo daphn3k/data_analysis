@@ -1,5 +1,5 @@
 #### Author: Daphne 
-#### comments/suggestions: github.com/daphn3k/data_science_module
+#### comments/suggestions: github.com/daphn3k/data_analysis
 #### version 0.1 - 20.06.2019
 #### Published under GNU GLP v3.0
 
