@@ -45,10 +45,12 @@ def find_NaN(df, filename='df_NaN.txt', threshold=100):
     
     percent = {}
     
+    spaces = max([len(el) for el in df.columns]) # max character length of column names. Will be used for allignment of columns 
+
     for nans, col in zip(df.isna().sum(), df):
         if nans!=0:
             percentNan = 100*nans/len(df)
-            f.write('%s:\t\t%d\t\t%.2f%%\n' % (col, nans, percentNan))
+            f.write('%s%s:\t\t%.2f%%\t\t%d\n' % ((' '*(spaces-len(col))), col, percentNan, nans))
             if percentNan >= threshold:
                 percent[col] = percentNan
             
