@@ -67,10 +67,9 @@ def cols_NaN(df, threshold=10):
     
     Parameters
     ----------
-    - df: pandas dataframe
-    - threshold: when percentage of missing values is over threshold, include this column 
+    - df {pandas dataframe}: Your data
+    - threshold {int of float}: when percentage of missing values is over threshold, include this column 
                 in dict to be returned. Default threshold is 10%
-
 
     Example
     -------
@@ -89,3 +88,66 @@ def cols_NaN(df, threshold=10):
 
     return columns
 
+
+
+def categoricals(df, filename = 'categorical.txt'):
+    '''Saves the categorical fields of a pandas dataframe with their associated values and values count to .txt file
+    
+    Parameters:
+    ----------
+    - df {pandas dataframe} -- Your data
+    - filename {str} -- [optional. Name to assign to file] (default: {'categorical.txt'})
+    
+    Returns:
+    --------
+    [dictionary] -- [key: Fields, value: [dictionary -- key: field category, value: field category values count]]
+    
+    
+    Example
+    -------
+    >> df = pd.DataFrame({'A': [0, 1, 2, None],
+                          'B': ['big', 'medium', 'tiny', 'small'],
+                          'C': [7, 8, 9, 10],
+                          'D': ['yes', 'no', 'yes', 'yes']})
+    >> cat = categorical(df)
+    >> cat
+        {'B':   {'tiny': 1, 
+                'small': 1, 
+                'big': 1, 
+                'medium': 1}, 
+        'D':    {'yes': 3, 
+                'no': 1}}
+
+    contents of categorical.txt are:
+        ***B***
+        medium: 1
+         small: 1
+          tiny: 1
+           big: 1
+
+        ***D***
+        yes:    3
+         no:    1
+
+
+    '''
+
+    # create dict with values of categorical fields
+    categorical = {}
+    spaces = {}
+
+    for el in df:
+        if df[el].dtype == 'O': # 'O' for type object
+            categorical[el] = {k:v for k, v in zip(df[el].value_counts().keys(), df[el].value_counts().values)}  
+            spaces[el] = max([len(word) for word in categorical[el].keys()]) # max character length of feature names. Will be used for allignment of columns
+    
+    # save categorical dict to file
+    g = open(filename, 'w')
+    for key, val in categorical.items():
+        g.write('***' + str(key) + '***\n')
+        for feat, numb in val.items():
+            g.write('%s%s:\t%s\n' % ((' '*(spaces[key]-len(feat))), str(feat),str(numb)))
+        g.write('\n')
+    g.close()
+
+    return categorical 
