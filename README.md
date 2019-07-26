@@ -3,18 +3,27 @@ Collecting my python functions to facilitate data exploration/analysis/etc.
 ---------------
 
 Available modules: 
-* dataexploration
+** dataexploration **
 
-Installation of desired module:  
+### Installation of desired module:  
 - clone the repo
 - in terminal navigate to module folder containing setup.py
 - type:  
   > pip install -e .
 
-Feel free to contact me with comments/questions/requests
+Feel free to contact me with comments/questions/requests by creating a new issue. 
 
 ----------------
 v0.1:  
-- find_NaN(): Calculate count and percentage of NaN values in pandas dataframe columns, save result to file. - Useful to get overview of large dataframe with many features
-- col_NaN(): Returns list with names of columns containing NaN values over the chosen percentage threshold. - Useful for dropping columns eg. 'df.drop(col_NaN(df,15), axis=1, inplace=True)' 
-- categoricals(): Saves the categorical fields of a pandas dataframe with their associated values and values count to .txt file & returns it as dict - Useful to get overview of large dataframe with many features
+- **read_csv_to_df(args)**: reads csv file to pandas dataframe & add a name to dataframe - Facilitates naming of output files from the other functions of this module
+- **find_NaN(args)**: Calculates count and percentage of NaN values in pandas dataframe columns, save result to file. - Useful to get overview of large dataframe with many features
+- **col_NaN(args)**: Returns list with names of columns containing NaN values over the chosen percentage threshold. - Useful for dropping columns eg. 'df.drop(col_NaN(df,15), axis=1, inplace=True)' 
+- **categoricals(args)**: Saves the categorical fields of a pandas dataframe with their associated values and values count to .txt file & returns it as dict - Useful to get overview of large dataframe with many features
+- **export_columns(args)**: Saves the names of a dataframe's columns to txt.file 
+- **export_descriptive_stats(args)**: Saves output of pandas.DataFrame.describe() to .csv file 
+
+
+
+to do:
+* extend read_csv_to_df to include more filetypes 
+* add plotting module
