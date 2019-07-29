@@ -5,7 +5,7 @@
 
 import pandas as pd
 import pandas.io
-
+import numpy as np
 
 def set_filename(dataframe, filename, default:str):
     '''Generate the filename that will be used by other functions in this module to save their output
@@ -269,9 +269,10 @@ def export_columns(df, filename = None):
 def export_descriptive_stats(df, filename = None):
     '''Save output of pandas.DataFrame.describe() to .csv file 
     
-    Arguments:
+    Parameters:
+    -----------
     - df {pandas.DataFrame} 
-    - filename {str} -- [Optional. ame to assign to file. Can also be a full path eg. ../output/test.txt
+    - filename {str} -- [Optional. Name to assign to file. Can also be a full path eg. ../output/test.txt
         If filename provided, this will be used to save output, if dataframe.name has a value then the default value is attached to it, 
         if neither conditions are met, default is used. [default: {'descriptiveStats.csv'}]
     '''
@@ -287,4 +288,30 @@ def export_descriptive_stats(df, filename = None):
     return
 
 
+
+def low_variance(df, threshold = 90):
+
+    '''Identify columns that have at least x percent same values - where x is the threshold
+
+    Parameters:
+    ----------
+    - df {pandas.DataFrame} 
+    - threshold {number} -- Optional. min percent of same values in a column {default:90}
+
+    Returns:
+    --------
+    list with column names
+
+    '''
+
+
+    lowVar = []
+
+    for col in df._get_numeric_data():
+        colMin = min(df[col])
+        percent = np.percentile(df[col], threshold)
+        if percent == colMin: 
+            lowVar.append(col)
+
+    return lowVar
 

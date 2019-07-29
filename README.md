@@ -2,7 +2,7 @@
 Collecting my python functions to facilitate data exploration/analysis/etc.
 ---------------
 
-Available packages: 
+Available packages:   
 ** dataexploration **
 
 ### Installation of desired module:  
@@ -21,6 +21,7 @@ v0.1:
 - **categoricals(args)**: Saves the categorical fields of a pandas dataframe with their associated values and values count to .txt file & returns it as dict - Useful to get overview of large dataframe with many features
 - **export_columns(args)**: Saves the names of a dataframe's columns to txt.file 
 - **export_descriptive_stats(args)**: Saves output of pandas.DataFrame.describe() to .csv file 
+- **low_variance(args)**: Identify columns that have at least x percent of same values
 
 
 

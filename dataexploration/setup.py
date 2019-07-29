@@ -7,5 +7,5 @@ setup(name='dataexploration',
       author='Daphne',
       license='GNU GLP v3.0',
       packages=['dataexploration'],
-      install_requires=['pandas'],
+      install_requires=['pandas', 'numpy'],
       zip_safe=False)
