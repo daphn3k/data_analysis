@@ -12,7 +12,7 @@ def set_filename(dataframe, filename, default:str):
 
     Parameters:
     -----------
-    - dataframe {pandas.Dataframe} -- [dataframe.name value]
+    - dataframe {pandas.Dataframe} -- [value of dataframe.name]
     - filename {str} -- [optionally provided by user]
     - default {str} -- [what to use if filename and dataframe.name are not provided]
     
