@@ -1,2 +1,2 @@
-from .dataframeplots import numeric_Hist
+from .plotting import numeric_Hist
 
