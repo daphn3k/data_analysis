@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='dataexploration',
-      version='0.1',
+      version='0.2.1',
       description='Functions for exploration of pandas.DataFrame content',
       url='http://github.com/daphn3k/data_analysis',
       author='Daphne',
